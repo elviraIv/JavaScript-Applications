@@ -12,13 +12,19 @@ async function displayPost() {
   //display post
   //display comments for the post
 
+ 
   const selectedId = document.getElementById("posts").value;
-  const post = await getPostById(selectedId);
-  const comments = await getCommentsByPostId(selectedId);
+
+  const [post, comments] = await Promise.all([
+    getPostById(selectedId),
+    getCommentsByPostId(selectedId)
+  ])
+
 
   const postTitleElement = document.getElementById("post-title");
   const liPostBodyElement = document.getElementById("post-body");
   const ulCommentsElement = document.getElementById("post-comments");
+
 
   postTitleElement.textContent = post.title;
   liPostBodyElement.textContent = post.body;
