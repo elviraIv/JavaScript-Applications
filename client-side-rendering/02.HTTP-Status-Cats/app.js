@@ -17,10 +17,10 @@ const catCard = (cat) => html`
 
 //start -> parse imported data -> pass to template
 
-
 const root = document.getElementById('allCats');
 catData.forEach(c => c.info = false);
 update();
+
 
 
 function update(){
